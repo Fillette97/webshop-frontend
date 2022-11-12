@@ -1,0 +1,51 @@
+
+
+<link href=
+        "https://fonts.googleapis.com/icon?family=Material+Icons&display=block"
+      rel="stylesheet">
+
+
+
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <h3>Products</h3>
+
+      <div *ngIf= isLoaded>
+        <table class="table table-bordered">
+          <tr>
+            <th width="20%">ID</th>
+            <th width="10%">Name</th>
+            <th width="10%">Price</th>
+            <th width="10%">Action</th>
+          </tr>
+
+          <tr *ngFor="let product of products">
+            <td>
+              {{ product.id }}
+            </td>
+            <td>
+              {{ product.name }}
+            </td>
+            <td>
+              {{ product.unitPrice }}
+            </td>
+            <td>
+              <button  (click)="updateProduct(product.id)" class='btn btn-info'
+                     ><mat-icon >edit</mat-icon></button>
+              <button (click)="deleteProduct(product.id)">
+                <mat-icon class = "delete_icon">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- if order history is empty then display a message -->
+      <div *ngIf="products.length == 0" class="alert alert-warning col-md-12" role="alert">
+        No products found.
+      </div>
+
+    </div>
+  </div>
+</div>

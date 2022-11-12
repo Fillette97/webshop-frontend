@@ -1,0 +1,57 @@
+<div class="main-content page-m">
+  <div class="section-content section-content-p30">
+
+    <div class="container-fluid">
+      <form [formGroup]="productUpdateForm" (ngSubmit)="onSubmit()">
+
+        <input class="form-control" formControlName="id" [(ngModel)]="product.id">
+
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" class="form-control" formControlName="name" [(ngModel)]="product.name">
+        </div>
+
+        <div class="form-group">
+          <label>Product Sku</label>
+          <input type="text" class="form-control" formControlName="sku" [(ngModel)]="product.sku">
+        </div>
+
+        <!--  <button (click)="updateProd()">-->
+        <!--    <mat-icon class = "primary">Update</mat-icon>-->
+        <!--  </button>-->
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-info">Update</button>
+        </div>
+
+        <!--            <div class="form-group">-->
+        <!--              <label >Product Category</label>-->
+        <!--              <select class="form-control" formControlName="categoryId" required>-->
+        <!--                <option value="Men Perfume" [selected]="'Men Perfume' == product.category_id">Men Perfume</option>-->
+        <!--                <option value="Women Perfume" [selected]="'Women' == product.category_id">Women Perfume</option>-->
+        <!--              </select>-->
+        <!--            </div>-->
+
+        <!--          <div class="form-group form-row">-->
+        <!--            <label class="col-md-3">Upload Image</label>-->
+        <!--            <div class="col-md-9">-->
+        <!--              <input type="file" id="image" (change)="onSelectedFile($event)" />-->
+        <!--              <div [innerHTML]="uploadError" class="error"></div>-->
+        <!--              <div *ngIf="imagePath">-->
+        <!--                <br />-->
+        <!--                <img [src]="imagePath" width="100px">-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<!--    <div>-->
+<!--      <h4>Product Detail Updated!</h4>-->
+<!--    </div>-->
+
