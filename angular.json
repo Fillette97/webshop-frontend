@@ -103,5 +103,8 @@
       }
     }
   },
-  "defaultProject": "iprwc-webshop"
+  "defaultProject": "iprwc-webshop",
+  "cli": {
+    "analytics": false
+  }
 }
