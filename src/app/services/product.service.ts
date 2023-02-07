@@ -1,20 +1,24 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Product } from '../common/product';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ProductCategory } from '../common/product-category';
+import {Inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Product} from '../common/product';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {ProductCategory} from '../common/product-category';
+import {environment} from "./environment";
+import {OKTA_AUTH} from "@okta/okta-angular";
+import {OktaAuth} from "@okta/okta-auth-js";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/products';
+  private baseUrl = `${environment.baseUrl}/api/products`;
 
-  private categoryUrl = 'http://localhost:8080/api/product-category';
+  private categoryUrl = `${environment.baseUrl}/api/product-category`;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,@Inject(OKTA_AUTH) private oktaAuth: OktaAuth) {
+  }
 
   deleteProduct(id: number): Observable<any> {
     // return this.http.delete(`${this.baseUrl}/delete-student/${id}`, { responseType: 'text' });
@@ -52,8 +56,9 @@ export class ProductService {
   }
 
 
-
-
+  getTest(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/admin-panel/test/`);
+  }
 
 
   searchProducts(theKeyword: string): Observable<Product[]> {
@@ -76,7 +81,6 @@ export class ProductService {
   }
 
 
-
   public getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
   }
@@ -89,8 +93,8 @@ export class ProductService {
   }
 
 
-  updateProduct(id: number, value: any): Observable<Object> {
-    return this.httpClient.post(`${this.baseUrl}/update-student/${id}`, value);
+  updateProduct(value: any): Observable<Object> {
+    return this.httpClient.put(`${this.baseUrl}/update-product`, value);
   }
 }
 

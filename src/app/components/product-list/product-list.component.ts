@@ -1,12 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
-import { Product } from 'src/app/common/product';
-import { ActivatedRoute } from '@angular/router';
-import { timeoutWith } from 'rxjs/operators';
-import { CartItem } from 'src/app/common/cart-item';
-import { CartService } from 'src/app/services/cart.service';
-import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
-import { OktaAuth } from '@okta/okta-auth-js';
+import {ProductService} from 'src/app/services/product.service';
+import {Product} from 'src/app/common/product';
+import {ActivatedRoute} from '@angular/router';
+import {timeoutWith} from 'rxjs/operators';
+import {CartItem} from 'src/app/common/cart-item';
+import {CartService} from 'src/app/services/cart.service';
+import {OktaAuthStateService, OKTA_AUTH} from '@okta/okta-angular';
+import {OktaAuth} from '@okta/okta-auth-js';
 
 @Component({
   selector: 'app-product-list',
@@ -32,7 +32,8 @@ export class ProductListComponent implements OnInit {
               private route: ActivatedRoute,
               private oktaAuthService: OktaAuthStateService,
               @Inject(OKTA_AUTH) private oktaAuth: OktaAuth
-              ) { }
+  ) {
+  }
 
 
   ngOnInit() {
@@ -41,9 +42,11 @@ export class ProductListComponent implements OnInit {
       console.log("These are products:" + this.listProducts())
       this.oktaAuth.getUser().then(
         (res) => {
-          console.log("this is user" + JSON.stringify(res) )
-           // res.groups.find((group) => group === 'Admin_product');
-          res.groups = 'Admin_product';
+          for (let i in res.groups as any) {
+            if (i === 'Admin_product_editor') {
+              return true;
+            }
+          }
         }
       );
     });
@@ -55,8 +58,7 @@ export class ProductListComponent implements OnInit {
 
     if (this.searchMode) {
       this.handleSearchProducts();
-    }
-    else {
+    } else {
       this.handleListProducts();
     }
 
@@ -92,8 +94,7 @@ export class ProductListComponent implements OnInit {
     if (hasCategoryId) {
       // get the "id" param string. convert string to a number using the "+" symbol
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
-    }
-    else {
+    } else {
       // not category id available ... default to category id 1
       this.currentCategoryId = 1;
     }
