@@ -3,12 +3,12 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { CreditcardService } from 'src/app/services/creditcard.service';
 
 import { CustomValidator } from 'src/app/validators/custom-validator';
-import {CartService} from "../../services/cart.service";
-import {CheckoutService} from "../../services/checkout.service";
+import {CartService} from "../../../services/cart.service";
+import {CheckoutService} from "../../../services/checkout.service";
 import {Router} from "@angular/router";
-import {Purchase} from "../../common/purchase";
-import {OrderItem} from "../../common/order-item";
-import {Order} from "../../common/order";
+import {Purchase} from "../../../common/purchase";
+import {OrderItem} from "../../../common/order-item";
+import {Order} from "../../../common/order";
 
 @Component({
   selector: 'app-checkout',

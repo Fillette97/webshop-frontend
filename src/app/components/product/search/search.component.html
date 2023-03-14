@@ -9,4 +9,8 @@
     Search
   </button>
 
+  <button *ngIf="isAuthenticated && admin"  routerLink="/admin-panel" class="au-btn-submit" >
+    Admin
+  </button>
+
 </div>
