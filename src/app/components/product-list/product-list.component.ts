@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
 
   // new properties for pagination
   thePageNumber: number = 1;
-  thePageSize: number = 5;
+  thePageSize: number = 10;
   theTotalElements: number = 0;
 
   previousKeyword: string = null;
@@ -40,15 +40,15 @@ export class ProductListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
       console.log("These are products:" + this.listProducts())
-      this.oktaAuth.getUser().then(
-        (res) => {
-          for (let i in res.groups as any) {
-            if (i === 'Admin_product_editor') {
-              return true;
-            }
-          }
-        }
-      );
+      // this.oktaAuth.getUser().then(
+      //   (res) => {
+      //     for (let i in res.groups as any) {
+      //       if (i === 'Admin_product_editor') {
+      //         return true;
+      //       }
+      //     }
+      //   }
+      // );
     });
   }
 

@@ -71,7 +71,7 @@ export class ProductEditComponent implements OnInit {
     this.productService.updateProduct(this.product).subscribe(
       data => {
         this.isUpdated = true;
-        this.productService.getProducts("http://localhost:8080/api/products").subscribe(data => {
+        this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
           this.products = data
           console.log("product to be updated" + data);
         })
@@ -115,6 +115,5 @@ export class ProductEditComponent implements OnInit {
   changeIsUpdate() {
     this.isUpdated = false;
   }
-
 
 }

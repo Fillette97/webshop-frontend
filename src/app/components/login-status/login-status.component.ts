@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login-status',
@@ -15,6 +15,9 @@ export class LoginStatusComponent implements OnInit {
   editProductButton : boolean = false;
 
 
+  storage: Storage= sessionStorage;
+
+
   constructor(private oktaAuthService: OktaAuthStateService,
               @Inject(OKTA_AUTH) private oktaAuth: OktaAuth) { }
 
@@ -24,6 +27,7 @@ export class LoginStatusComponent implements OnInit {
     this.oktaAuthService.authState$.subscribe(
       (result) => {
         this.isAuthenticated = result.isAuthenticated!;
+
         this.getUserDetails();
       }
     );
@@ -31,22 +35,6 @@ export class LoginStatusComponent implements OnInit {
 
 
 
-
-
-  // getUserDetails() {
-  //   if (this.isAuthenticated) {
-  //
-  //     // Fetch the logged in user details (user's claims)
-  //     //
-  //     // user full name is exposed as a property name
-  //     this.oktaAuth.getUser().then(
-  //       (res) => {
-  //         this.userFullName = res.name;
-  //         this.editProductButton = res.groups.find((group) => group === 'Admin_product');
-  //       }
-  //     );
-  //   }
-  // }
   getUserDetails() {
     if (this.isAuthenticated) {
 
@@ -55,8 +43,15 @@ export class LoginStatusComponent implements OnInit {
       // user full name is exposed as a property name
       this.oktaAuth.getUser().then(
         (res) => {
+
           this.userFullName = res.name as string;
+
+          const theEmail = res.email;
+
+          this.storage.setItem('userEmail', JSON.stringify(theEmail))
+
         }
+
       );
     }
   }
@@ -66,8 +61,4 @@ export class LoginStatusComponent implements OnInit {
     this.oktaAuth.signOut();
   }
 
-  // getAdminPanel() {
-  //   console.log("HEREEEE")
-  //   Router.navigate(['/admin-panel']);
-  // }
 }

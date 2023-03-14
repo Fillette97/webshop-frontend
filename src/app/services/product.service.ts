@@ -22,7 +22,7 @@ export class ProductService {
 
   deleteProduct(id: number): Observable<any> {
     // return this.http.delete(`${this.baseUrl}/delete-student/${id}`, { responseType: 'text' });
-    const productUrl = `${this.baseUrl}/productId/${id}`;
+    const productUrl = `${this.baseUrl}/admin-panel/productId/${id}`;
 
     return this.httpClient.delete<Product>(productUrl);
   }
@@ -94,7 +94,7 @@ export class ProductService {
 
 
   updateProduct(value: any): Observable<Object> {
-    return this.httpClient.put(`${this.baseUrl}/update-product`, value);
+    return this.httpClient.put(`${this.baseUrl}/admin-panel/update-product`, value);
   }
 }
 

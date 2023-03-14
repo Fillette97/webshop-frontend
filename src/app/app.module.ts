@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {ProductListComponent} from './components/product-list/product-list.component';
@@ -44,13 +44,23 @@ const oktaAuth = new OktaAuth(oktaConfig);
 
 import {AdminGuard} from "./admin/admin.guard";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 // import {AuthInterceptorService} from "./services/auth-interceptor.service";
+function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector) {
+  // Use injector to access any service available within your application
+  const router = injector.get(Router);
 
+  // Redirect the user to your custom login page
+  router.navigate(['/login']);
+}
 
 const routes: Routes = [
+  {path: 'order-history', component: OrderHistoryComponent, canActivate: [OktaAuthGuard],
+    data: {onAuthRequired: sendToLoginPage} },
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'product-edit/:id', canActivate: [OktaAuthGuard, AdminGuard], component: ProductEditComponent},
   {path: 'login', component: LoginComponent},
+  {path:'add-product', canActivate: [OktaAuthGuard, AdminGuard], component: AddProductComponent},
   {path: 'admin-panel', canActivate: [OktaAuthGuard, AdminGuard], component: AdminPanelComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
@@ -76,6 +86,7 @@ const routes: Routes = [
     AdminPanelComponent,
     AddProductComponent,
     ProductEditComponent,
+    OrderHistoryComponent,
 
   ],
   imports: [
