@@ -21,14 +21,15 @@ export class SearchComponent implements OnInit {
     this.oktaAuthService.authState$.subscribe(
       (result) => {
         this.isAuthenticated = result.isAuthenticated!;
+        if(this.isAuthenticated){
+          this.checkAdmin()
+        }
       }
     );
-    this.getGroup();
-
 
   }
 
-  async getGroup(){
+  async checkAdmin(){
     const user = await this.oktaAuth.getUser().then()
     for (let i in user.groups as any) {
       if (user.groups[i] === 'Admin_product_editor') {

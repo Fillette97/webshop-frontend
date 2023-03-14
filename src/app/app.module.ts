@@ -56,7 +56,7 @@ const routes: Routes = [
   {path: 'product-edit/:id', canActivate: [OktaAuthGuard, AdminGuard], component: ProductEditComponent},
   {path: 'login', component: LoginComponent},
   {path: 'add-product', canActivate: [OktaAuthGuard, AdminGuard], component: AddProductComponent},
-  {path: 'guards-panel', canActivate: [OktaAuthGuard, AdminGuard], component: AdminPanelComponent},
+  {path: 'admin-panel', canActivate: [OktaAuthGuard, AdminGuard], component: AdminPanelComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},

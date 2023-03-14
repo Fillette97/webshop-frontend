@@ -6,6 +6,7 @@ import {AddProductComponent} from "./add-product/add-product.component";
 import {ProductCategoryMenuComponent} from "./product-category-menu/product-category-menu.component";
 import {ProductEditComponent} from "./product-edit/product-edit.component";
 import {SearchComponent} from "./search/search.component";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -14,7 +15,8 @@ import {SearchComponent} from "./search/search.component";
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [SearchComponent, ProductCategoryMenuComponent]
 })
