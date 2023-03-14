@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../../common/product";
+import {Product} from "../../../common/product";
 import {FormControl, FormGroup} from "@angular/forms";
-import {ProductService} from "../../services/product.service";
+import {ProductService} from "../../../services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Observable} from "rxjs";
 
