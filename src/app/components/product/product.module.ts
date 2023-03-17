@@ -18,6 +18,6 @@ import {RouterModule} from "@angular/router";
     ReactiveFormsModule,
     RouterModule
   ],
-  exports: [SearchComponent, ProductCategoryMenuComponent]
+  exports: [SearchComponent, ProductCategoryMenuComponent,AddProductComponent, ProductEditComponent, ProductListComponent]
 })
 export class ProductModule { }
