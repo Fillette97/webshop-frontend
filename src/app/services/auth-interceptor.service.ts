@@ -22,7 +22,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     // const securedEndpoints = ['http://localhost:8080/api/products/admin-panel'];
 
     // Only add an access token for secured endpoints
-    const securedEndpoints = ['http://localhost:8080/api/products/admin-panel'];
+    const securedEndpoints = ['http://localhost:8080/api/products/admin-panel','https://webshop-frontend-ivory.vercel.app/api/products/admin-panel'];
 
     if (securedEndpoints.some(url => request.urlWithParams.includes(url))) {
       // get access token

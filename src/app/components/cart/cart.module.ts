@@ -13,7 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [CartStatusComponent]
+  exports: [CartStatusComponent,CartDetailsComponent,CheckoutComponent]
 })
 export class CartModule {
 }
