@@ -18,6 +18,9 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
 
+    // // Only add an access token for secured endpoints
+    // const securedEndpoints = ['http://localhost:8080/api/products/admin-panel'];
+
     // Only add an access token for secured endpoints
     const securedEndpoints = ['http://localhost:8080/api/products/admin-panel'];
 
