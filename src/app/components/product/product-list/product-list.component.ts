@@ -40,15 +40,6 @@ export class ProductListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
       console.log("These are products:" + this.listProducts())
-      // this.oktaAuth.getUser().then(
-      //   (res) => {
-      //     for (let i in res.groups as any) {
-      //       if (i === 'Admin_product_editor') {
-      //         return true;
-      //       }
-      //     }
-      //   }
-      // );
     });
   }
 
@@ -144,6 +135,6 @@ export class ProductListComponent implements OnInit {
     const theCartItem = new CartItem(theProduct);
 
     this.cartService.addToCart(theCartItem);
-  }
+  }f
 
 }
