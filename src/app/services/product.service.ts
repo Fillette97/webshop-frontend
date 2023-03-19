@@ -94,7 +94,9 @@ export class ProductService {
 
 
   updateProduct(value: any): Observable<Object> {
+    console.log("this is value" +  JSON.stringify(value))
     return this.httpClient.put(`${this.baseUrl}/admin-panel/update-product`, value);
+
   }
 }
 

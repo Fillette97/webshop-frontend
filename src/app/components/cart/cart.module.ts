@@ -1,9 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CartDetailsComponent} from "./cart-details/cart-details.component";
-import {CartStatusComponent} from "./cart-status/cart-status.component";
+
 import {CheckoutComponent} from "./checkout/checkout.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CartStatusComponent} from "./cart-status/cart-status.component";
+import {CartDetailsComponent} from "./cart-details/cart-details.component";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -11,9 +13,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
-  exports: [CartStatusComponent,CartDetailsComponent,CheckoutComponent]
+  exports: [CartStatusComponent, CartDetailsComponent, CheckoutComponent]
 })
 export class CartModule {
 }
