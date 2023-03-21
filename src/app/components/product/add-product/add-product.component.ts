@@ -15,20 +15,10 @@ export class AddProductComponent implements OnInit {
   public product: Product = new Product();
   public products: Product[] = []
 
-  public product_id = this.activatedRoute.snapshot.params.id;
-
   constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    console.log("THIS product ID in edit" + this.product_id);
-    this.productService.getProduct(this.product_id).subscribe(
-      data => {
-        console.log(data)
-        this.product = data
-
-      },
-      error => console.log(error));
   }
 
   productUpdateForm = new FormGroup({
@@ -60,6 +50,7 @@ export class AddProductComponent implements OnInit {
         this.productService.getProducts("http://localhost:8080/api/products").subscribe(data => {
           this.products = data
           console.log("product to be updated" + data);
+          this.router.navigateByUrl('/admin-panel')
         })
       },
       error => console.log(error));

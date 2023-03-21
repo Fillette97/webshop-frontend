@@ -73,7 +73,7 @@ export class ProductEditComponent implements OnInit {
         this.isUpdated = true;
         this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
           this.products = data
-          console.log("product to be updated" + data);
+          this.router.navigateByUrl('/admin-panel')
         })
       },
       error => console.log(error));
