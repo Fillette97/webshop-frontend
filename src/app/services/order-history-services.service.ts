@@ -14,7 +14,7 @@ export class OrderHistoryService {
   constructor(private httpClient: HttpClient) { }
 
   getOrderHistory(theEmail: string): Observable<GetResponseOrderHistory> {
-    const headers = new HttpHeaders().set('Content-Type','application/json');
+    const headers = new HttpHeaders().set('Accept','application/json');
     // need to build URL based on the customer email
     const orderHistoryUrl = `${this.orderUrl}/search/findByCustomerEmail?email=${theEmail}`;
 
