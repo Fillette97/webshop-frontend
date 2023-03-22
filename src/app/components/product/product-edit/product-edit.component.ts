@@ -68,10 +68,19 @@ export class ProductEditComponent implements OnInit {
     this.product.imageUrl = this.ProductImageUrl.value;
     this.product.unitsInStock = this.ProductUnitsInStock.value;
 
+    // this.productService.updateProduct(this.product).subscribe(
+    //   data => {
+    //     this.isUpdated = true;
+    //     this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
+    //       this.products = data
+    //       this.router.navigateByUrl('/admin-panel')
+    //     })
+    //   },
+    //   error => console.log(error));
     this.productService.updateProduct(this.product).subscribe(
       data => {
         this.isUpdated = true;
-        this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
+        this.productService.getProducts().subscribe(data => {
           this.products = data
           this.router.navigateByUrl('/admin-panel')
         })
