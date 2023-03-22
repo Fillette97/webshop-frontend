@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 import {MatIconModule} from "@angular/material/icon";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -9,7 +10,8 @@ import {MatIconModule} from "@angular/material/icon";
   declarations: [AdminPanelComponent],
     imports: [
         CommonModule,
-        MatIconModule
+        MatIconModule,
+      RouterModule
     ]
 })
 export class AdminModule { }

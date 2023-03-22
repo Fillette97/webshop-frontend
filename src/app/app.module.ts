@@ -79,10 +79,10 @@ const routes: Routes = [
     MatTableModule,
     MatIconModule,
     ProductModule,
-    CartModule,
     AdminModule,
     LoginModule,
     OrderModule,
+    CartModule
 
   ],
   providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}},

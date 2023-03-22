@@ -47,13 +47,13 @@ export class ProductService {
   }
 
 
-  getProductList(theCategoryId: number): Observable<Product[]> {
-
-    // need to build URL based on category id
-    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
-
-    return this.getProducts(searchUrl);
-  }
+  // getProductList(theCategoryId: number): Observable<Product[]> {
+  //
+  //   // need to build URL based on category id
+  //   const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
+  //
+  //   return this.getProducts(searchUrl);
+  // }
 
 
   getTest(): Observable<any> {
@@ -61,13 +61,13 @@ export class ProductService {
   }
 
 
-  searchProducts(theKeyword: string): Observable<Product[]> {
-
-    // need to build URL based on the keyword
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
-
-    return this.getProducts(searchUrl);
-  }
+  // searchProducts(theKeyword: string): Observable<Product[]> {
+  //
+  //   // need to build URL based on the keyword
+  //   const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
+  //
+  //   return this.getProducts(searchUrl);
+  // }
 
   searchProductsPaginate(thePage: number,
                          thePageSize: number,
@@ -80,9 +80,10 @@ export class ProductService {
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
-
-  public getProducts(searchUrl: string): Observable<Product[]> {
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
+  // searchUrl: string
+  public getProducts(): Observable<Product[]> {
+    // return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
+    return this.httpClient.get<GetResponseProducts>(`${this.baseUrl}`).pipe(map(response => response._embedded.products));
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
@@ -94,7 +95,9 @@ export class ProductService {
 
 
   updateProduct(value: any): Observable<Object> {
+    console.log("this is value" +  JSON.stringify(value))
     return this.httpClient.put(`${this.baseUrl}/admin-panel/update-product`, value);
+
   }
 }
 

@@ -33,12 +33,17 @@ export class AdminPanelComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.productService.getProducts("http://localhost:8080/api/products/").subscribe((products: Product[]) => {
+    // this.productService.getProducts("http://localhost:8080/api/products/").subscribe((products: Product[]) => {
+    //   this.products = products
+    //   console.log(products);
+    //   this.isLoaded = true;
+    // })
+    this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products
+      console.log(products);
       this.isLoaded = true;
     })
   }
-
 
 
   public updateProduct(id: String) {
@@ -48,13 +53,22 @@ export class AdminPanelComponent implements OnInit {
 
 
   public deleteProduct(id: string): void {
-
+    // this.productService.deleteProduct(Number(id))
+    //   .subscribe(
+    //     data => {
+    //       console.log(data);
+    //       // this.deleteMessage=true;
+    //       this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
+    //         this.products = data
+    //       })
+    //     },
+    //     error => console.log(error));
     this.productService.deleteProduct(Number(id))
       .subscribe(
         data => {
           console.log(data);
           // this.deleteMessage=true;
-          this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
+          this.productService.getProducts().subscribe(data => {
             this.products = data
           })
         },
