@@ -8,11 +8,16 @@
   right:0;
   min-width:95px;
   color:#fff;
-  border:10px solid #205b8d;
+  border:1px solid black;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
   border-radius:43px;
-  background:#205b8d
+  background: black
+
+}
+
+.security-btn:hover{
+  background: #CD853F
 }
 
 /*
