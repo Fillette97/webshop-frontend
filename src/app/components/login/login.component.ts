@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
 
     this.oktaSignin = new OktaSignIn({
-      logo: 'assets/images/logo.png',
+      logo: 'assets/images/products/perfume_logo.png',
       features: {
         registration: true
       },
