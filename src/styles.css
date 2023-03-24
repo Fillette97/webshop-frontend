@@ -136,7 +136,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-  background:#0da8e4;
+  background:#DAA520;
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -252,7 +252,8 @@ input.au-input.au-input-xl{
 }
 
 .total{
-  background:#205b8d;
+  /*background:#205b8d;*/
+  background:black;
   line-height:43px;
   color:#fff;
   border-radius:30px;
@@ -289,11 +290,13 @@ input.au-input.au-input-xl{
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
   border-radius:43px;
-  background:#205b8d
+  /*background:#205b8d*/
+  background:black
 }
 
 .au-btn-submit:hover{
-  background:#05143f
+  /*background:#05143f*/
+  background: #CD853F
 }
 
 .au-btn-submit>i{
@@ -380,7 +383,8 @@ input.au-input.au-input-xl{
 }
 
 .navbar-sidebar .navbar-list li a:hover{
-  color:#0da8e4
+  /*color:#0da8e4*/
+  color: #CD853F
 }
 
 /*
@@ -483,7 +487,8 @@ input.au-input.au-input-xl{
   line-height:inherit
 }
 .header-mobile .navbar-mobile .navbar-mobile-list li a:hover{
-  color:#0da8e4
+  /*color:#0da8e4*/
+  color:#CD853F
 }
 .header-mobile .navbar-mobile .navbar-mobile-list li a>i{
   margin-right:19px
@@ -544,7 +549,8 @@ input.au-input.au-input-xl{
 .price{
   margin:15px 0 0;
   font-weight:800;
-  color:#0da8e4
+  /*color:#0da8e4*/
+  color: black
 }
 .product-box h1{
   font-size:18px;
@@ -692,7 +698,7 @@ table.table.table-bordered{
   border:1px solid #dee2e6
 }
 table.table.table-bordered th{
-  BACKGROUND:#0da8e4;
+  BACKGROUND: #DAA520;
   color:#fff;
   font-size:14px;
   padding:7px
@@ -719,7 +725,7 @@ table.table.table-bordered th{
 .price{
   margin:15px 0 0;
   font-weight:800;
-  color:#0da8e4
+  color: black
 }
 
 .detail-section{
@@ -739,27 +745,37 @@ table.table.table-bordered th{
  */
 
 .btn-info{
-  color:#fff;
-  background-color:#0da8e4!important;
-  border-color:#0da8e4!important
+  /*color:#fff;*/
+  /*background-color:#0da8e4!important;*/
+  /*border-color:#0da8e4!important*/
 }
+.btn-dark:hover{
+  background: #CD853F;
+  color:#fff
+}
+
 a.primary-btn{
-  background:#05143f;
+  color: black;
   padding:7px 20px;
   text-align:center;
   display:inline-block;
-  color:#fff;
   border-radius:2px;
   font-size:14px;
   margin-top:5px
 }
 a.primary-btn:hover{
-  background:#0da8e4;
+  background: #CD853F;
   color:#fff
 }
 
 .active-link {
   font-weight: bold;
+}
+
+
+.btn-dark:hover{
+  background: #CD853F;
+  color:#fff
 }
 
 /*
@@ -982,7 +998,7 @@ footer ul li{
     text-align:center
   }
   .product-box{
-    text-align:centerg
+    text-align:center
   }
   .page-container{
     position:relative;

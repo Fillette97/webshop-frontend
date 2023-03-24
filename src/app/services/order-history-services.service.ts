@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {OrderHistory} from "../common/order-history";
+import {environment} from "./environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderHistoryService {
 
-  // private orderUrl = 'http://localhost:8080/api/orders';
-  private orderUrl = 'https://webshop-frontend-ivory.vercel.app/api/orders';
+  private baseUrl = `${environment.baseUrl}/api/orders`;
 
   constructor(private httpClient: HttpClient) { }
 
   getOrderHistory(theEmail: string): Observable<GetResponseOrderHistory> {
     // need to build URL based on the customer email
-    const orderHistoryUrl = `${this.orderUrl}/search/findByCustomerEmail?email=${theEmail}`;
+    const orderHistoryUrl = `${this.baseUrl}/search/findByCustomerEmail?email=${theEmail}`;
 
     return this.httpClient.get<GetResponseOrderHistory>(orderHistoryUrl);
   }
