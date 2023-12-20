@@ -12,7 +12,7 @@ export class LoginStatusComponent implements OnInit {
 
   isAuthenticated: boolean = false;
   userFullName: string;
-  editProductButton : boolean = false;
+
 
 
   storage: Storage= sessionStorage;

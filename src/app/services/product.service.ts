@@ -21,7 +21,6 @@ export class ProductService {
   }
 
   deleteProduct(id: number): Observable<any> {
-    // return this.http.delete(`${this.baseUrl}/delete-student/${id}`, { responseType: 'text' });
     const productUrl = `${this.baseUrl}/admin-panel/productId/${id}`;
 
     return this.httpClient.delete<Product>(productUrl);
@@ -47,27 +46,12 @@ export class ProductService {
   }
 
 
-  // getProductList(theCategoryId: number): Observable<Product[]> {
-  //
-  //   // need to build URL based on category id
-  //   const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
-  //
-  //   return this.getProducts(searchUrl);
-  // }
-
 
   getTest(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/admin-panel/test/`);
   }
 
 
-  // searchProducts(theKeyword: string): Observable<Product[]> {
-  //
-  //   // need to build URL based on the keyword
-  //   const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
-  //
-  //   return this.getProducts(searchUrl);
-  // }
 
   searchProductsPaginate(thePage: number,
                          thePageSize: number,
@@ -95,7 +79,6 @@ export class ProductService {
 
 
   updateProduct(value: any): Observable<Object> {
-    console.log("this is value" +  JSON.stringify(value))
     return this.httpClient.put(`${this.baseUrl}/admin-panel/update-product`, value);
 
   }

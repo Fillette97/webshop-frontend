@@ -21,7 +21,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("THIS product ID in edit" + this.product_id);
     this.productService.getProduct(this.product_id).subscribe(
       data => {
         console.log(data)
@@ -43,18 +42,6 @@ export class ProductEditComponent implements OnInit {
     categoryId: new FormControl(),
   });
 
-  // updateProduct(id: String){
-  //   this.productService.getProduct(Number(id))
-  //     .subscribe(
-  //       data => {
-  //         console.log("this is product DATA" +  JSON.stringify(data))
-  //         this.product=data
-  //
-  //       },
-  //       error => console.log(error));
-
-
-  // }
 
   onSubmit() {
     const currentId = this.product.id
@@ -68,17 +55,8 @@ export class ProductEditComponent implements OnInit {
     this.product.imageUrl = this.ProductImageUrl.value;
     this.product.unitsInStock = this.ProductUnitsInStock.value;
 
-    // this.productService.updateProduct(this.product).subscribe(
-    //   data => {
-    //     this.isUpdated = true;
-    //     this.productService.getProducts("http://localhost:8080/api/products/").subscribe(data => {
-    //       this.products = data
-    //       this.router.navigateByUrl('/admin-panel')
-    //     })
-    //   },
-    //   error => console.log(error));
     this.productService.updateProduct(this.product).subscribe(
-      data => {
+      () => {
         this.isUpdated = true;
         this.productService.getProducts().subscribe(data => {
           this.products = data
@@ -105,9 +83,6 @@ export class ProductEditComponent implements OnInit {
     return this.productUpdateForm.get('unitPrice');
   }
 
-  get ProductId() {
-    return this.productUpdateForm.get('id');
-  }
 
   get ProductImageUrl() {
     return this.productUpdateForm.get('image_url');
@@ -117,12 +92,6 @@ export class ProductEditComponent implements OnInit {
     return this.productUpdateForm.get('unitsInStock');
   }
 
-  get ProductCategoryId() {
-    return this.productUpdateForm.get('categoryId');
-  }
 
-  changeIsUpdate() {
-    this.isUpdated = false;
-  }
 
 }

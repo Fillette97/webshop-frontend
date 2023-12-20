@@ -15,7 +15,7 @@ export class AddProductComponent implements OnInit {
   public product: Product = new Product();
   public products: Product[] = []
 
-  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private productService: ProductService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -44,22 +44,11 @@ export class AddProductComponent implements OnInit {
     this.product.imageUrl = this.ProductImageUrl.value;
     this.product.unitsInStock = this.ProductUnitsInStock.value;
 
-    // this.productService.updateProduct(this.product).subscribe(
-    //   data => {
-    //     this.isUpdated = true;
-    //     this.productService.getProducts("http://localhost:8080/api/products").subscribe(data => {
-    //       this.products = data
-    //       console.log("product to be updated" + data);
-    //       this.router.navigateByUrl('/admin-panel')
-    //     })
-    //   },
-    //   error => console.log(error));
     this.productService.updateProduct(this.product).subscribe(
-      data => {
+      () => {
         this.isUpdated = true;
         this.productService.getProducts().subscribe(data => {
           this.products = data
-          console.log("product to be updated" + data);
           this.router.navigateByUrl('/admin-panel')
         })
       },
@@ -83,9 +72,6 @@ export class AddProductComponent implements OnInit {
     return this.productUpdateForm.get('unitPrice');
   }
 
-  public get ProductId(): AbstractControl {
-    return this.productUpdateForm.get('id');
-  }
 
   public get ProductImageUrl(): AbstractControl {
     return this.productUpdateForm.get('image_url');
@@ -95,8 +81,6 @@ export class AddProductComponent implements OnInit {
     return this.productUpdateForm.get('unitsInStock');
   }
 
-  public get ProductCategoryId(): AbstractControl {
-    return this.productUpdateForm.get('categoryId');
-  }
+
 
 }
